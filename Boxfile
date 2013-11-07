@@ -15,3 +15,10 @@ web1:
 db1:
   name: boletim
   type: mysql
+before_deploy:
+  # https://github.com/CakeDC/migrations
+  - "app/Console/cake Migrations.migration all"
+after_deploy:
+  - "rm -rf app/tmp/cache/models/*"
+  - "rm -rf app/tmp/cache/persistent/*"
+  - "rm -rf app/tmp/cache/views/*"
