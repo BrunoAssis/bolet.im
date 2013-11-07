@@ -12,7 +12,7 @@ web1:
     - app/tmp/sessions
     - app/tmp/tests
   before_deploy:
-    - "app/Console/cake schema create"
+    - "app/Console/cake schema update Boletim"
   after_deploy:
     - "rm -rf app/tmp/cache/models/*"
     - "rm -rf app/tmp/cache/persistent/*"
