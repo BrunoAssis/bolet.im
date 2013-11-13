@@ -54,10 +54,18 @@
  * For MySQL to connect via socket specify the `unix_socket` parameter instead of `host` and `port`
  */
 
+/* Pagoda Box
 define("DB_HOST", $_SERVER['DB1_HOST']);
 define("DB_NAME", $_SERVER['DB1_NAME']);
 define("DB_USER", $_SERVER['DB1_USER']);
 define("DB_PASS", $_SERVER['DB1_PASS']);
+*/
+
+/* Localhost */
+define("DB_HOST", "localhost");
+define("DB_NAME", "boletim");
+define("DB_USER", "root");
+define("DB_PASS", "root");
 
 class DATABASE_CONFIG {
 
