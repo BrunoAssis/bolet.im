@@ -14,52 +14,26 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "bolet.im" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "bolet.im" %>">
 
-  	<%= stylesheet_link_tag    "application" %>
+  	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <div class="row">
-      <div class="large-12 columns">
-        <nav class="top-bar" data-topbar>
-          <ul class="title-area">
-            <li class="name">
-              <h1><%= link_to "bolet.im", root_url %></h1>
-            </li>
-          </ul>
-  
-          <section class="top-bar-section">
-  
-            <ul class="right">
-              <li class="divider"></li>
-              <li class="active has-dropdown">
-                <a href="#">U Bruno</a>
-                <ul class="dropdown">
-                  <li><a href="#">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul class="left">
-              <li class="divider"></li>
-              <li><%= link_to "Notas", root_url %></li>
-              <li class="divider"></li>
-              <li><%= link_to "Alunos", root_url %></li>
-              <li class="divider"></li>
-            </ul>
-  
-          </section>
-
-        </nav>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <%= render 'layouts/messages' %>
+      <div class="row">
+          <%= yield %>
       </div>
-    </div>
-    <div class="row">
-        <%= yield %>
-    </div>
-
+    </main>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

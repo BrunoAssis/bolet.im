@@ -2,6 +2,7 @@
 <% @users.each do |user| %>
   <p>User: <%=link_to user.name, user %></p>
 <% end %>
+
 <dl>
   <dt>Number to Currency</dt>
   <dd><%= number_to_currency(123.56) %></dd>
