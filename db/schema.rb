@@ -11,10 +11,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113130822) do
+ActiveRecord::Schema.define(version: 20131219194458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "classrooms", force: true do |t|
+    t.integer  "school_id"
+    t.integer  "course_id"
+    t.integer  "year_id"
+    t.integer  "period_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "classrooms", ["course_id"], name: "index_classrooms_on_course_id", using: :btree
+  add_index "classrooms", ["period_id"], name: "index_classrooms_on_period_id", using: :btree
+  add_index "classrooms", ["school_id"], name: "index_classrooms_on_school_id", using: :btree
+  add_index "classrooms", ["year_id"], name: "index_classrooms_on_year_id", using: :btree
+
+  create_table "courses", force: true do |t|
+    t.integer  "school_id"
+    t.string   "name"
+    t.string   "short_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "courses", ["school_id"], name: "index_courses_on_school_id", using: :btree
+
+  create_table "grades", force: true do |t|
+    t.integer  "school_id"
+    t.integer  "student_id"
+    t.integer  "teacher_class_id"
+    t.decimal  "grade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "grades", ["school_id"], name: "index_grades_on_school_id", using: :btree
+  add_index "grades", ["student_id"], name: "index_grades_on_student_id", using: :btree
+  add_index "grades", ["teacher_class_id"], name: "index_grades_on_teacher_class_id", using: :btree
+
+  create_table "periods", force: true do |t|
+    t.integer  "school_id"
+    t.integer  "year_id"
+    t.integer  "order"
+    t.string   "name"
+    t.string   "short_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "periods", ["school_id"], name: "index_periods_on_school_id", using: :btree
+  add_index "periods", ["year_id"], name: "index_periods_on_year_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -26,6 +77,75 @@ ActiveRecord::Schema.define(version: 20131113130822) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "school_years", force: true do |t|
+    t.integer  "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "school_years", ["year"], name: "index_school_years_on_year", unique: true, using: :btree
+
+  create_table "schools", force: true do |t|
+    t.string   "name"
+    t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schools", ["subdomain"], name: "index_schools_on_subdomain", unique: true, using: :btree
+
+  create_table "students", force: true do |t|
+    t.integer  "school_id"
+    t.integer  "user_id"
+    t.integer  "classroom_id"
+    t.string   "name"
+    t.date     "birthdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "students", ["classroom_id"], name: "index_students_on_classroom_id", using: :btree
+  add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
+  add_index "students", ["user_id"], name: "index_students_on_user_id", using: :btree
+
+  create_table "subjects", force: true do |t|
+    t.integer  "school_id"
+    t.string   "name"
+    t.string   "short_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subjects", ["school_id"], name: "index_subjects_on_school_id", using: :btree
+
+  create_table "teacher_classes", force: true do |t|
+    t.integer  "school_id"
+    t.integer  "teacher_id"
+    t.integer  "subject_id"
+    t.integer  "classroom_id"
+    t.string   "weekday"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teacher_classes", ["classroom_id"], name: "index_teacher_classes_on_classroom_id", using: :btree
+  add_index "teacher_classes", ["school_id"], name: "index_teacher_classes_on_school_id", using: :btree
+  add_index "teacher_classes", ["subject_id"], name: "index_teacher_classes_on_subject_id", using: :btree
+  add_index "teacher_classes", ["teacher_id"], name: "index_teacher_classes_on_teacher_id", using: :btree
+
+  create_table "teachers", force: true do |t|
+    t.integer  "school_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teachers", ["school_id"], name: "index_teachers_on_school_id", using: :btree
+  add_index "teachers", ["user_id"], name: "index_teachers_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

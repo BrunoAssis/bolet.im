@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>School:</strong>
+  <%= @period.school %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @period.year %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @period.order %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @period.name %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @period.short_description %>
+</p>
+
+<%= link_to 'Edit', edit_period_path(@period) %> |
+<%= link_to 'Back', periods_path %>

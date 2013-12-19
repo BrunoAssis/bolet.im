@@ -1,0 +1,39 @@
+<h1>Listing teacher_classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>School</th>
+      <th>Teacher</th>
+      <th>Subject</th>
+      <th>Classroom</th>
+      <th>Weekday</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teacher_classes.each do |teacher_class| %>
+      <tr>
+        <td><%= teacher_class.school %></td>
+        <td><%= teacher_class.teacher %></td>
+        <td><%= teacher_class.subject %></td>
+        <td><%= teacher_class.classroom %></td>
+        <td><%= teacher_class.weekday %></td>
+        <td><%= teacher_class.start_time %></td>
+        <td><%= teacher_class.end_time %></td>
+        <td><%= link_to 'Show', teacher_class %></td>
+        <td><%= link_to 'Edit', edit_teacher_class_path(teacher_class) %></td>
+        <td><%= link_to 'Destroy', teacher_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Teacher class', new_teacher_class_path %>
