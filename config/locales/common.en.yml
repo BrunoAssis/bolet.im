@@ -1,0 +1,8 @@
+en:
+  common:
+    users: Users
+    courses: Courses
+    subjects: Subjects
+  home:
+    index:
+      title: Home

@@ -1,0 +1,16 @@
+pt-BR:
+  common:
+    schools: Escolas
+    school_years: Anos Letivos
+    users: Usuários
+    courses: Cursos
+    subjects: Matérias
+    teacher_classes: Aulas
+    teachers: Professores
+    classrooms: Turmas
+    periods: Períodos
+    students: Alunos
+    grades: Notas
+  home:
+    index:
+      title: Início

@@ -1,0 +1,6 @@
+pt-BR:
+  layouts:
+    navigation:
+      users: Usuários
+      courses: Cursos
+      subjects: Matérias

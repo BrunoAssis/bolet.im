@@ -1,3 +1,4 @@
 class Course < ActiveRecord::Base
-  belongs_to :school
+	acts_as_tenant :school
+	belongs_to :school
 end

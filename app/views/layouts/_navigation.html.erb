@@ -18,7 +18,11 @@
             <ul class="dropdown">
               <li><%= link_to 'Edit account', edit_user_registration_path %></li>
               <% if current_user.has_role? :admin %>
-                <li><%= link_to 'Admin', users_path %></li>
+                <li><%= link_to t('common.users'), users_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to t('common.schools'), schools_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to t('common.school_years'), school_years_path %></li>
               <% end %>
               <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
             </ul>
@@ -35,11 +39,25 @@
         </ul>
 
         <ul class="left">
+          
           <li class="divider"></li>
-          <li><%= link_to "Notas", root_url %></li>
+          <li><%= link_to t('common.grades'), grades_path %></li>
           <li class="divider"></li>
-          <li><%= link_to "Alunos", root_url %></li>
+          <li><%= link_to t('common.teacher_classes'), teacher_classes_path %></li>
           <li class="divider"></li>
+          <li><%= link_to t('common.teachers'), teachers_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to t('common.classrooms'), classrooms_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to t('common.periods'), periods_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to t('common.students'), students_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to t('common.courses'), courses_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to t('common.subjects'), subjects_path %></li>
+          <li class="divider"></li>
+
         </ul>
 
       </section>

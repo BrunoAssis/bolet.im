@@ -1,5 +1,7 @@
 class Student < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :school
-  belongs_to :classroom
+	acts_as_tenant :school
+	
+	belongs_to :user
+	belongs_to :school
+	belongs_to :classroom
 end
