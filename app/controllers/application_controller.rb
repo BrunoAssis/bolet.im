@@ -6,6 +6,4 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end
-
-  set_current_tenant_by_subdomain :school, :subdomain
 end
