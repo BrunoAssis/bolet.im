@@ -16,8 +16,6 @@ gem 'rolify'
 gem 'sendgrid'
 gem 'zurb-foundation'
 
-# Rails to Entity-Relationship Diagram
-gem 'rails-erd'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -29,6 +27,9 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+
+  # Rails to Entity-Relationship Diagram
+  gem 'rails-erd', git: 'https://github.com/bshelton229/rails-erd.git', branch: 'mavericks'
 end
 group :development, :test do
   gem 'factory_girl_rails'
