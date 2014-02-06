@@ -4,8 +4,6 @@
   <thead>
     <tr>
       <th>User</th>
-      <th>School</th>
-      <th>Classroom</th>
       <th>Name</th>
       <th>Birthdate</th>
       <th></th>
@@ -18,10 +16,8 @@
     <% @students.each do |student| %>
       <tr>
         <td><%= student.user %></td>
-        <td><%= student.school %></td>
-        <td><%= student.classroom %></td>
-        <td><%= student.name %></td>
-        <td><%= student.birthdate %></td>
+        <td><%= student.user.name %></td>
+        <td><%= student.user.birthdate %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

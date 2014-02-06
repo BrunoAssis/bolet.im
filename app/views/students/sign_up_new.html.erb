@@ -1,0 +1,84 @@
+<h1>New student</h1>
+
+<%= form_for @student, method: :post, url: sign_up_path do |f| %>
+  
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= fields_for :user do |g| %>
+  
+    <div class="field">
+      <%= g.label :name %><br>
+      <%= g.text_field :name, placeholder: "ex. José da Silva Santos" %>
+    </div>
+
+    <div class="field">
+      <%= g.label :email %><br>
+      <%= g.email_field :email, placeholder: "ex. jose_da_silva@hotmail.com" %>
+    </div>
+
+    <div class="field">
+      <%= g.label :password %><br>
+      <%= g.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= g.label :password_confirmation %><br>
+      <%= g.password_field :password_confirmation %>
+    </div>
+
+    <div class="field">
+      <%= g.label :gender %><br>
+      <%= g.select :gender, [["(prefiro não dizer)", nil], ["Masculino", "M"], ["Feminino", "F"]] %>
+    </div>
+
+    <div class="field">
+      <%= g.label :birthdate %><br>
+      <%= g.date_field :birthdate %>
+    </div>
+
+  <% end %>
+
+  <%= fields_for :school do |g| %>
+    <div class="field">
+      <%= g.label :name, "School Name" %><br>
+      <%= g.text_field :name, placeholder: "ex. Colégio Maria do Rosário" %>
+    </div>
+  <% end %>
+
+  <%= fields_for :course do |g| %>
+    <div class="field">
+      <%= g.label :name, "Course Name" %><br>
+      <%= g.text_field :name, placeholder: "ex. 8a. Série" %>
+    </div>
+  <% end %>
+
+  <%= fields_for :classroom  do |g| %>
+    <div class="field">
+      <%= g.label :name, "Classroom Name" %><br>
+      <%= g.text_field :name, placeholder: "ex. A" %>
+    </div>
+  <% end %>
+
+  <%= fields_for :period do |g| %>
+    <div class="field">
+      <%= g.label :name, "Period Name" %><br>
+      <%= g.text_field :name, placeholder: "ex. Manhã" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', students_path %>

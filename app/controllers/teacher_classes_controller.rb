@@ -69,6 +69,18 @@ class TeacherClassesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_class_params
-      params.require(:teacher_class).permit(:school_id, :teacher_id, :subject_id, :classroom_id, :weekday, :start_time, :end_time)
+      p = params.require(:teacher_class).permit(:school_id, :teacher_id, :subject_id, :classroom_id, :weekday, :start_time, :end_time)
+
+      if p["start_time(4i)"].blank?
+        @teacher_class.start_time = nil
+        p = p.except("start_time(1i)", "start_time(2i)", "start_time(3i)", "start_time(4i)", "start_time(5i)") 
+      end
+
+      if p["end_time(4i)"].blank?
+        @teacher_class.end_time = nil
+        p = p.except("end_time(1i)", "end_time(2i)", "end_time(3i)", "end_time(4i)", "end_time(5i)")
+      end
+
+      p
     end
 end

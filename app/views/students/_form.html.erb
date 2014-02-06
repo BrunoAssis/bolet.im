@@ -13,23 +13,7 @@
 
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :school_id %><br>
-    <%= f.text_field :school_id %>
-  </div>
-  <div class="field">
-    <%= f.label :classroom_id %><br>
-    <%= f.text_field :classroom_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :birthdate %><br>
-    <%= f.date_select :birthdate %>
+    <%= collection_select :student, :user_id, User.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

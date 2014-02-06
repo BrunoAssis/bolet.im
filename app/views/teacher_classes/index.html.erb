@@ -3,7 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>School</th>
       <th>Teacher</th>
       <th>Subject</th>
       <th>Classroom</th>
@@ -19,7 +18,6 @@
   <tbody>
     <% @teacher_classes.each do |teacher_class| %>
       <tr>
-        <td><%= teacher_class.school %></td>
         <td><%= teacher_class.teacher %></td>
         <td><%= teacher_class.subject %></td>
         <td><%= teacher_class.classroom %></td>

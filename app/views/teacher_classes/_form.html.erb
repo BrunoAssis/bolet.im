@@ -12,32 +12,30 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :school_id %><br>
-    <%= f.text_field :school_id %>
+    <%= f.label :classroom_id %><br>
+    <%= collection_select :teacher_class, :classroom_id, Classroom.all, :id, :to_s %>
   </div>
+
   <div class="field">
     <%= f.label :teacher_id %><br>
-    <%= f.text_field :teacher_id %>
+    <%= collection_select :teacher_class, :teacher_id, Teacher.all, :id, :to_s, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :subject_id %><br>
-    <%= f.text_field :subject_id %>
+    <%= collection_select :teacher_class, :subject_id, Subject.all, :id, :to_s %>
   </div>
-  <div class="field">
-    <%= f.label :classroom_id %><br>
-    <%= f.text_field :classroom_id %>
-  </div>
+  
   <div class="field">
     <%= f.label :weekday %><br>
     <%= f.text_field :weekday %>
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.time_select :start_time %>
+    <%= f.time_select :start_time, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :end_time %><br>
-    <%= f.time_select :end_time %>
+    <%= f.time_select :end_time, include_blank: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

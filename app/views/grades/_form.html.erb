@@ -12,16 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :school_id %><br>
-    <%= f.text_field :school_id %>
-  </div>
-  <div class="field">
     <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
+    <%= collection_select :grade, :student_id, Student.all, :id, :to_s %>
   </div>
   <div class="field">
     <%= f.label :teacher_class_id %><br>
-    <%= f.text_field :teacher_class_id %>
+    <%= collection_select :grade, :teacher_class_id, TeacherClass.all, :id, :to_s %>
   </div>
   <div class="field">
     <%= f.label :grade %><br>

@@ -6,23 +6,13 @@
 </p>
 
 <p>
-  <strong>School:</strong>
-  <%= @student.school %>
-</p>
-
-<p>
-  <strong>Classroom:</strong>
-  <%= @student.classroom %>
-</p>
-
-<p>
   <strong>Name:</strong>
-  <%= @student.name %>
+  <%= @student.user.name %>
 </p>
 
 <p>
   <strong>Birthdate:</strong>
-  <%= @student.birthdate %>
+  <%= @student.user.birthdate %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |

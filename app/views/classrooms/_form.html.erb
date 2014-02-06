@@ -12,20 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :school_id %><br>
-    <%= f.text_field :school_id %>
-  </div>
-  <div class="field">
     <%= f.label :course_id %><br>
-    <%= f.text_field :course_id %>
-  </div>
-  <div class="field">
-    <%= f.label :year_id %><br>
-    <%= f.text_field :year_id %>
+    <%= collection_select :classroom, :course_id, Course.all, :id, :to_s %>
   </div>
   <div class="field">
     <%= f.label :period_id %><br>
-    <%= f.text_field :period_id %>
+    <%= collection_select :classroom, :period_id, Period.all, :id, :to_s %>
   </div>
   <div class="field">
     <%= f.label :name %><br>

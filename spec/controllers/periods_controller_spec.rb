@@ -23,7 +23,7 @@ describe PeriodsController do
   # This should return the minimal set of attributes required to create a valid
   # Period. As you add validations to Period, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "school" => "" } }
+  let(:valid_attributes) { {} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -106,8 +106,8 @@ describe PeriodsController do
         # specifies that the Period created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Period.any_instance.should_receive(:update).with({ "school" => "" })
-        put :update, {:id => period.to_param, :period => { "school" => "" }}, valid_session
+        Period.any_instance.should_receive(:update).with({})
+        put :update, {:id => period.to_param, :period => { "name" => "Teste" }}, valid_session
       end
 
       it "assigns the requested period as @period" do

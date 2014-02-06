@@ -13,11 +13,16 @@ BoletIm::Application.routes.draw do
 
   resources :classrooms
 
+  get 'sign_up'   => 'students#sign_up_new'
+  post 'sign_up'  => 'students#sign_up_create'
+
   resources :students
 
   resources :school_years
 
   resources :schools
+
+
 
   root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations"}

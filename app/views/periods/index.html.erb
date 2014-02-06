@@ -18,7 +18,7 @@
     <% @periods.each do |period| %>
       <tr>
         <td><%= period.school %></td>
-        <td><%= period.year %></td>
+        <td><%= period.school_year.year unless period.school_year.nil? %></td>
         <td><%= period.order %></td>
         <td><%= period.name %></td>
         <td><%= period.short_description %></td>

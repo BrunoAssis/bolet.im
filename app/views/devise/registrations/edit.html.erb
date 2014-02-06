@@ -8,6 +8,12 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
+  <div><%= f.label :gender %><br />
+  <%= f.text_field :gender, length: 1 %></div>
+
+  <div><%= f.label :birthdate %><br />
+  <%= f.date_field :birthdate %></div>
+
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 

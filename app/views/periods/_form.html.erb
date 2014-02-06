@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :school_id %><br>
-    <%= f.text_field :school_id %>
+    <%= collection_select :period, :school_id, School.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :year_id %><br>
-    <%= f.text_field :year_id %>
-  </div>
+    <%= f.label :school_year_id %><br>
+    <%= collection_select :period, :school_year_id, SchoolYear.all, :id, :year %>
+  </div>  
   <div class="field">
     <%= f.label :order %><br>
     <%= f.number_field :order %>
