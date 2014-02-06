@@ -1,7 +1,16 @@
 <h3><%= t '.title' %></h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+
+<p>Se você é um aluno, <%= link_to "clique aqui", sign_up_student_path %> para se cadastrar.</p>
+<p>Se você é um professor, <%= link_to "clique aqui", sign_up_teacher_path %> para se cadastrar.</p>
+
+
+
+
+
+
+
+
+
 
 <dl>
   <dt>Number to Currency</dt>

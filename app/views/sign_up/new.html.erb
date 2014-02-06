@@ -1,0 +1,7 @@
+<h1>New <%= @type %></h1>
+
+<% if @type == 'student' %>
+  <%= render 'student' %>
+<% elsif @type == 'teacher' %>
+  <%= render 'teacher' %>
+<% end %>

@@ -17,39 +17,6 @@ class StudentsController < ApplicationController
     @student = Student.new
   end
 
-  # GET /sign_up
-  def sign_up_new
-    @student = Student.new
-    @user = User.new
-    @school = School.new
-    @course = Course.new
-    @classroom = Classroom.new
-    @period = Period.new
-  end
-
-  # POST /sign_up
-  # POST /sign_up.json
-  def sign_up_create
-    @user = User.new(params[:user])
-    @school = School.new(params[:school])
-    @course = Course.new(params[:course])
-    @classroom = Classroom.new(params[:classroom])
-    @period = Period.new(params[:period])
-    @student = Student.new(user: @user)
-
-    raise
-    
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @student }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # GET /students/1/edit
   def edit
   end
@@ -102,6 +69,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:user_id, :school_id, :classroom_id, :name, :birthdate)
+      params.require(:student).permit(:user_id)
     end
 end

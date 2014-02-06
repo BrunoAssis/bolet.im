@@ -4,6 +4,10 @@ class Classroom < ActiveRecord::Base
 
   has_and_belongs_to_many :students, :join_table => :classrooms_students
 
+  validates :course, presence: true
+  validates :period, presence: true
+  validates :name, presence: true
+
   def to_s
     "#{self.name}"
   end
